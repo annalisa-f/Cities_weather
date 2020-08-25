@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@500&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #9ED7FF;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  font-size: 30px;
+  color: black;
+}
+
+#nav {
+  text-align: center;
+  background-color: #FFB0AE;
+  height: 80px;
+  padding-top: 30px;
+}
+
+#info {
+
+}
+
+#content {
+  max-width: 1300px;
+  text-align: center;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+  <html>
+
+    <head>
+      <meta charset="utf-8">
+      <title>Recipe Book</title>
+      <link rel="stylesheet" href="static/screen.css" />
+      <meta name="description" content="Organise your recipes & keep them safe in one place." />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-tofit=no">
+    </head>
+
+    <body>
+      <form>
+          {% for i in ingred %}
+            <label for="quantity">Quantity:</label>
+            <input type="text" id="quantity" name="quantity{{i}}" />
+            <label for="ingredient">Ingredient:</label>
+            <input type="text" id="ingredient" name="ingredient{{i}}" />
+            <br>
+          {% endfor %}
+      </form>
+    </body>
+
+  </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+  <html>
+
+    <head>
+      <meta charset="utf-8">
+      <title>Recipe Book</title>
+      <link rel="stylesheet" href="static/screen.css" />
+      <meta name="description" content="Organise your recipes & keep them safe in one place." />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-tofit=no">
+    </head>
+
+    <body>
+      <form action="/add" method="post">
+        <p>
+          <label for="ingredients">Number of Ingredients</label>
+          <input type="number" id="ingred" name="ingred" min="1" autocomplete="off" required />
+          <label for="steps">Number of Steps</label>
+          <input type="number" id="steps" name="steps" min="1" autocomplete="off" required />
+          <input type="submit" value="Enter Recipe" />
+        </p>
+      </form>
+    </body>
+
+
+  </html>

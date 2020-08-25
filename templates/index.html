@@ -5,16 +5,28 @@
     <head>
       <meta charset="utf-8">
       <title>Recipe Book</title>
-      <link rel="stylesheet" href="screen.css" />
+      <link rel="stylesheet" href="static/screen.css" />
       <meta name="description" content="Organise your recipes & keep them safe in one place." />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-tofit=no">
     </head>
 
   <body>
     <div id='nav'>
+      <a href="{{ url_for('index') }}">Home</a>
+      &nbsp;&#10047;&nbsp;
+      <a href="{{ url_for('numbers') }}">Add Recipe</a>
+      &nbsp;&#10047;&nbsp;
+      <a href="view.html">View Recipes</a>
     </div>
 
-    <div 
+    <div id='info'>
+      <div id="content">
+        <h1>Your Personal Recipe Book!</h1>
+        <p>Welcome to the place where you can record and collate your favourite recipes. No more loose pieces of paper, getting lost
+        and cluttering up your draws. Simply start on the 'add recipe' page, and your recipes will automatically be saved to your recipe book,
+        where you can view them at your leisure.</p>
+      </div>
+    </div>
   </body>
 
   </html>
