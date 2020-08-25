@@ -11,7 +11,7 @@
     </head>
 
     <body>
-      <form>
+      <form action="/confirm" method="post">
           {% for i in ingred %}
             <label for="quantity">Quantity:</label>
             <input type="text" id="quantity" name="quantity{{i}}" />
@@ -19,6 +19,16 @@
             <input type="text" id="ingredient" name="ingredient{{i}}" />
             <br>
           {% endfor %}
+
+          <br>
+
+          {% for m in methodnum %}
+            <label for="steps">Step {{m+1}}:</label>
+            <textarea id="method" name="method{{m}}" rows="3"> </textarea>
+            <br>
+          {% endfor %}
+
+          <input type="submit" value="Add Recipe" />
       </form>
     </body>
 
