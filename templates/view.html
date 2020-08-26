@@ -11,26 +11,13 @@
     </head>
 
     <body>
-      <p>Your recipe has been added!</p>
-      <h1>{{name}}</h1>
-
-      <h3>Ingredients:</h3>
-      <p>
-        {% for i in ingredients %}
-          {{ingredients[i]}} {{i}}<br>
+      <div id='recipes'>
+        {% for id in id %}
+          <div class='onerecipe'>
+            <p>{{id}}</p>
+          </div>
         {% endfor %}
-      </p>
-
-      <h3>Method:</h3>
-      <p>
-        <ol>
-          {% for m in method %}
-            <li>{{m}}</li><br>
-          {% endfor %}
-        </ol>
-      </p>
-
-
+      </div>
     </body>
 
   </html>

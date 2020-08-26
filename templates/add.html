@@ -12,6 +12,8 @@
 
     <body>
       <form action="/confirm" method="post">
+        <label for="name">Recipe Name:</label>
+        <input type="text" id="name" name="name" required/>
           {% for i in ingred %}
             <label for="quantity">Quantity:</label>
             <input type="text" id="quantity" name="quantity{{i}}" />
