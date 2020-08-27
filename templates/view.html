@@ -11,12 +11,36 @@
     </head>
 
     <body>
+      <div id='nav'>
+        <a href="{{ url_for('index') }}">Home</a>
+        &nbsp;&#10047;&nbsp;
+        <a href="{{ url_for('numbers') }}">Add Recipe</a>
+        &nbsp;&#10047;&nbsp;
+        <a href="{{ url_for('view') }}">View Recipes</a>
+      </div>
+      
       <div id='recipes'>
-        {% for id in id %}
+        <a href="{{ url_for('index') }}">
           <div class='onerecipe'>
-            <p>{{id}}</p>
+            <h2>Sugared Banana</h2>
+            <p>1 tsp Cinnamon <br> 2 tsp Sugar <br> 1 Banana</p>
+            <ol>
+              <li>Mix the Cinnamon and Sugar to create Cinnamon Sugar</li>
+              <li>Slice the banana and spread slices on a plate</li>
+              <li>Sprinkle the cinnamon sugar over the siced banana & enjoy!</li>
+            </ol>
           </div>
-        {% endfor %}
+        </a>
+          {% for n, info in allrecipes.items() %}
+          <div class="onerecipe">
+            <h2>{{n}}</h2>
+            {% for i in info %}
+              {% for help in i %}
+                <p>{{help}}</p>
+              {% endfor %}
+            {% endfor %}
+          </div>
+          {% endfor %}
       </div>
     </body>
 

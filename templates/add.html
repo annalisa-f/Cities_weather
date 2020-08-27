@@ -11,6 +11,14 @@
     </head>
 
     <body>
+      <div id='nav'>
+        <a href="{{ url_for('index') }}">Home</a>
+        &nbsp;&#10047;&nbsp;
+        <a href="{{ url_for('numbers') }}">Add Recipe</a>
+        &nbsp;&#10047;&nbsp;
+        <a href="{{ url_for('view') }}">View Recipes</a>
+      </div>
+      
       <form action="/confirm" method="post">
         <label for="name">Recipe Name:</label>
         <input type="text" id="name" name="name" required/>

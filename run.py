@@ -2,7 +2,40 @@ from flask import Flask, render_template, request, g
 import sqlite3
 
 app = Flask(__name__)
+
+app.jinja_env.filters['zip'] = zip
+
 RECIPEDB = 'recipes.db'
+
+def fetchrecipes(db):
+
+    name = []
+    ingredients = []
+    method = []
+    cur = db.execute('SELECT name FROM Recipes')
+    for row in cur:
+        nrow = row[0]
+        name.append(nrow)
+
+    for n in name:
+
+        oneingred = []
+        onemethod = []
+
+        cur = db.execute('SELECT ingredients FROM ' + n)
+        for row in cur:
+            if row[0] is not None:
+                oneingred.append(row[0])
+        ingredients.append(oneingred)
+
+        cur = db.execute('SELECT steps FROM ' + n)
+        for row in cur:
+            if row[0] is not None:
+                onemethod.append(row[0])
+        method.append(onemethod)
+
+
+    return [name, ingredients, method]
 
 @app.route('/')
 def index():
@@ -35,6 +68,7 @@ def confirm():
     ingredients = []
     quantity = []
     method = []
+    ingreds = []
 
     for input in request.form:
         if input == 'name':
@@ -46,17 +80,37 @@ def confirm():
         elif 'method' in input:
             method.append(request.form[input])
 
-    print(name, quantity, ingredients, method)
-    ingreds = dict(zip(ingredients, quantity))
+    for q, i in zip(quantity, ingredients):
+        qi = q, i
+        qistr = " ".join(qi)
+        ingreds.append(qistr)
 
+
+    namedb = name.replace(" ", "_")
+    namedb = str(namedb)
+    print(name)
     db = sqlite3.connect(RECIPEDB)
 
     cur= db.execute(
-        'INSERT INTO recipes(name, ingredients, method) VALUES(?, ?, ?)',
-        (name, str(ingreds), str(method))
-    )
+        'CREATE TABLE ' + namedb + '( id INTEGER PRIMARY KEY, ingredients TEXT, steps TEXT)'
+        )
 
-    db.commit()
+    cur= db.execute(
+        'INSERT INTO Recipes(name) VALUES (?)', (namedb,)
+        )
+
+    for i in ingreds:
+        db.execute(
+        'INSERT INTO ' + namedb +'(ingredients) VALUES (?)', (i,)
+        )
+        db.commit()
+
+    for m in method:
+        db.execute(
+        'INSERT INTO ' + namedb +'(steps) VALUES (?)', (m,)
+        )
+        db.commit()
+
     db.close()
 
 
@@ -67,15 +121,43 @@ def view():
 
     db = sqlite3.connect(RECIPEDB)
 
-    id = []
-    name = []
-    ingredients = {}
-    method = []
-
-    cur= db.execute(
-        'SELECT id, name, ingredients, method FROM recipes'
-    )
+    recipes = fetchrecipes(db)
 
     db.close()
 
-    return render_template('view.html', id=id)
+    name=recipes[0]
+    cleanname = []
+    ingredients = []
+    methods = []
+
+    for i in recipes[1]:
+        i.insert(0, 'Ingredients: ')
+        ingredients.append(i)
+
+    for m in recipes[2]:
+        m.insert(0, 'Method: ')
+        methods.append(m)
+
+
+    for n in name:
+        cleanname.append(n.replace("_", " "))
+
+    ingred_method = []
+
+
+    for i, m in zip(ingredients, methods):
+        im = []
+        im.append(i)
+        im.append(m)
+        ingred_method.append(im)
+
+
+
+    allrecipes = dict(zip(cleanname, ingred_method))
+
+    #print(name)
+    #print(allrecipes)
+
+
+
+    return render_template('view.html', allrecipes=allrecipes)
