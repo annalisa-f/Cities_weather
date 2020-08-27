@@ -14,6 +14,7 @@ def fetchrecipes(db):
     method = []
     cur = db.execute('SELECT name FROM Recipes')
     for row in cur:
+        print(row)
         nrow = row[0]
         name.append(nrow)
 
@@ -125,39 +126,23 @@ def view():
 
     db.close()
 
-    name=recipes[0]
-    cleanname = []
-    ingredients = []
-    methods = []
-
-    for i in recipes[1]:
-        i.insert(0, 'Ingredients: ')
-        ingredients.append(i)
-
-    for m in recipes[2]:
-        m.insert(0, 'Method: ')
-        methods.append(m)
+    names = {}
+    ingredients = recipes[1]
+    method = recipes[2]
+    number = 0
 
 
-    for n in name:
-        cleanname.append(n.replace("_", " "))
-
-    ingred_method = []
-
-
-    for i, m in zip(ingredients, methods):
-        im = []
-        im.append(i)
-        im.append(m)
-        ingred_method.append(im)
+    for n in recipes[0]:
+        nicen = n.replace("_", " ")
+        names[number] = nicen
+        number += 1
 
 
 
-    allrecipes = dict(zip(cleanname, ingred_method))
 
     #print(name)
     #print(allrecipes)
 
 
 
-    return render_template('view.html', allrecipes=allrecipes)
+    return render_template('view.html', names=names, ingredients=ingredients, method=method)

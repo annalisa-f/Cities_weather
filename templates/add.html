@@ -18,28 +18,35 @@
         &nbsp;&#10047;&nbsp;
         <a href="{{ url_for('view') }}">View Recipes</a>
       </div>
-      
-      <form action="/confirm" method="post">
-        <label for="name">Recipe Name:</label>
-        <input type="text" id="name" name="name" required/>
-          {% for i in ingred %}
-            <label for="quantity">Quantity:</label>
-            <input type="text" id="quantity" name="quantity{{i}}" />
-            <label for="ingredient">Ingredient:</label>
-            <input type="text" id="ingredient" name="ingredient{{i}}" />
+
+      <div class='content'>
+        <form action="/confirm" method="post">
+          <p>
+            <label for="name">Recipe Name</label>
             <br>
-          {% endfor %}
+            <input type="text" id="name" name="name" autocomplete="off" required/>
+          </p>
+            {% for i in ingred %}
+              <p>
+                <label for="quantity">Quantity:</label>
+                <input type="text" id="quantity" name="quantity{{i}}" autocomplete="off"/>
+                <label for="ingredient">Ingredient:</label>
+                <input type="text" id="ingredient" name="ingredient{{i}}" autocomplete="off"/>
+              </p>
+            {% endfor %}
 
-          <br>
+            {% for m in methodnum %}
+              <p>
+                <label for="steps">Step {{m+1}}</label>
+                <br>
+                <textarea id="method" name="method{{m}}" rows="4" autocomplete="off"></textarea>
+              </p>
+            {% endfor %}
 
-          {% for m in methodnum %}
-            <label for="steps">Step {{m+1}}:</label>
-            <textarea id="method" name="method{{m}}" rows="3"> </textarea>
-            <br>
-          {% endfor %}
+            <input type="submit" value="Add Recipe" class='btn'/>
+        </form>
+      </div>
 
-          <input type="submit" value="Add Recipe" />
-      </form>
     </body>
 
   </html>

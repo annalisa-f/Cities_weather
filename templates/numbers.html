@@ -18,16 +18,26 @@
         &nbsp;&#10047;&nbsp;
         <a href="{{ url_for('view') }}">View Recipes</a>
       </div>
-      
-      <form action="/add" method="post">
-        <p>
-          <label for="ingredients">Number of Ingredients</label>
-          <input type="number" id="ingred" name="ingred" min="1" autocomplete="off" required />
-          <label for="steps">Number of Steps</label>
-          <input type="number" id="steps" name="steps" min="1" autocomplete="off" required />
-          <input type="submit" value="Enter Recipe" />
-        </p>
-      </form>
+
+      <div class='content'>
+        <div class='background'>
+        <form action="/add" method="post">
+          <p>
+            <label for="ingredients">Number of Ingredients</label>
+            <br>
+            <input type="number" id="ingred" name="ingred" min="1" autocomplete="off" required />
+          </p>
+          <p>
+            <label for="steps">Number of Steps</label>
+            <br>
+            <input type="number" id="steps" name="steps" min="1" autocomplete="off" required />
+          </p>
+          <p>
+            <input type="submit" value="Enter Recipe" class='btn'/>
+          </p>
+        </form>
+        </div>
+      </div>
     </body>
 
 

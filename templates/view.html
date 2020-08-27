@@ -18,29 +18,27 @@
         &nbsp;&#10047;&nbsp;
         <a href="{{ url_for('view') }}">View Recipes</a>
       </div>
-      
-      <div id='recipes'>
-        <a href="{{ url_for('index') }}">
-          <div class='onerecipe'>
-            <h2>Sugared Banana</h2>
-            <p>1 tsp Cinnamon <br> 2 tsp Sugar <br> 1 Banana</p>
-            <ol>
-              <li>Mix the Cinnamon and Sugar to create Cinnamon Sugar</li>
-              <li>Slice the banana and spread slices on a plate</li>
-              <li>Sprinkle the cinnamon sugar over the siced banana & enjoy!</li>
-            </ol>
-          </div>
-        </a>
-          {% for n, info in allrecipes.items() %}
-          <div class="onerecipe">
-            <h2>{{n}}</h2>
-            {% for i in info %}
-              {% for help in i %}
-                <p>{{help}}</p>
+
+      <div class="background">
+        <div id='recipes'>
+          {% for v, n in names.items() %}
+            <div class="onerecipe">
+              <h2>{{n}}</h2>
+              <h3>Ingredients:</h3>
+              <p>
+              {% for i in ingredients[v] %}
+                {{i}}<br>
               {% endfor %}
-            {% endfor %}
-          </div>
+              </p>
+              <h3>Method:</h3>
+              <ol>
+                {% for m in method[v] %}
+                  <li>{{m}}</li>
+                {% endfor %}
+              </ol>
+            </div>
           {% endfor %}
+        </div>
       </div>
     </body>
 
