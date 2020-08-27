@@ -138,11 +138,4 @@ def view():
         number += 1
 
 
-
-
-    #print(name)
-    #print(allrecipes)
-
-
-
     return render_template('view.html', names=names, ingredients=ingredients, method=method)
