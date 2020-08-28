@@ -40,6 +40,24 @@ p {
   margin-bottom: 1em;
 }
 
+#confcont {
+  width: 400px;
+  margin: auto;
+  background-color: #570608;
+  padding: 25px 25px;
+}
+
+#ingredients {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px 25px;
+}
+
+.ingred {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8em;
+}
+
 .content {
   max-width: 1300px;
   text-align: center;
@@ -56,6 +74,10 @@ p {
   min-height: 800px;
   max-width: 1200px;
   margin: auto;
+}
+
+.centertext {
+  text-align: center;
 }
 
 #recipes {
@@ -136,6 +158,10 @@ input::-webkit-inner-spin-button {
   }
 
   li {
+    font-size: 1em;
+  }
+
+  .ingred {
     font-size: 1em;
   }
 

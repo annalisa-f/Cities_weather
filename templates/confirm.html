@@ -18,26 +18,33 @@
         &nbsp;&#10047;&nbsp;
         <a href="{{ url_for('view') }}">View Recipes</a>
       </div>
-      
-      <p>Your recipe has been added!</p>
-      <h1>{{name}}</h1>
 
-      <h3>Ingredients:</h3>
-      <p>
-        {% for i in ingredients %}
-          {{ingredients[i]}} {{i}}<br>
-        {% endfor %}
-      </p>
+      <div class='background'>
+        <div id='confcont'>
+          <span class="centertext"><p>Your recipe has been added!</p>
+          <h1>{{name}}</h1>
+          <br>
+          <h3>Ingredients:</h3></span>
+          <div id='ingredients'>
+            {% for i in ingredients %}
+              <div class='ingred'>
+                {{ingredients[i]}} {{i}}<br>
+              </div>
+            {% endfor %}
+          </div>
 
-      <h3>Method:</h3>
-      <p>
-        <ol>
-          {% for m in method %}
-            <li>{{m}}</li><br>
-          {% endfor %}
-        </ol>
-      </p>
+          <br>
 
+          <span class="centertext"><h3>Method:</h3></span>
+          <p>
+            <ol>
+              {% for m in method %}
+                <li>{{m}}</li><br>
+              {% endfor %}
+            </ol>
+          </p>
+        </div>
+      </div>
 
     </body>
 

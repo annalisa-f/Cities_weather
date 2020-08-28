@@ -93,7 +93,7 @@ def confirm():
     db = sqlite3.connect(RECIPEDB)
 
     cur= db.execute(
-        'CREATE TABLE ' + namedb + '( id INTEGER PRIMARY KEY, ingredients TEXT, steps TEXT)'
+        'CREATE TABLE IF NOT EXISTS ' + namedb + '( id INTEGER PRIMARY KEY, ingredients TEXT, steps TEXT)'
         )
 
     cur= db.execute(
